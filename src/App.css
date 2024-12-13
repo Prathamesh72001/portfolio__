@@ -1,0 +1,277 @@
+.App {
+    text-align: center;
+    background-image: url("https://img.freepik.com/free-photo/flat-lay-desktop-with-agenda-magnifying-glass_23-2148397834.jpg?t=st=1733202896~exp=1733206496~hmac=8247036a7fc965b0dc0fc8762496175cb1df8c014653349b012535f312ed2e57&w=900");
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-size: cover;
+}
+
+.App-header {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.social-bar {
+    top: 15px;
+    left: 15px;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+}
+
+.tool-bar {
+    top: 15px;
+    right: 15px;
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    align-items: end;
+    justify-content: start;
+    gap: 10px;
+}
+
+@media (max-width: 550px) {
+    .tool-bar {
+        top: 15px;
+        right: 15px;
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        align-items: end;
+        justify-content: start;
+        gap: 10px;
+    }
+}
+
+.tab {
+    background-color: #00C08D;
+    color: white;
+    padding: 8px 15px;
+    /* Add padding for better spacing */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-family: Arial, sans-serif;
+    font-size: calc(5px + 2vmin);
+    text-align: center;
+    /* Center text inside each tab */
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #ffffff;
+    /* Different color for active tab */
+    color: #00C08D;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu-item.active {
+    background-color: #00C08D;
+    color: white;
+    padding: 8px 15px;
+    /* Add padding for better spacing */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-family: Arial, sans-serif;
+    font-size: calc(5px + 2vmin);
+    text-align: center;
+    /* Center text inside each tab */
+    cursor: pointer;
+}
+
+.menu-item {
+    background-color: #ffffff;
+    /* Different color for active tab */
+    color: #00C08D;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 8px 15px;
+    /* Add padding for better spacing */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-family: Arial, sans-serif;
+    font-size: calc(5px + 2vmin);
+    text-align: center;
+}
+
+.image-button {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    border-radius: 15px;
+    border-color: #00C08D;
+    border-width: 2px;
+    background-size: cover;
+}
+
+.image-card {
+    width: calc(15px + 15vmin);
+    height: calc(15px + 15vmin);
+    cursor: pointer;
+    border-radius: 15px;
+    border-color: #00C08D;
+    border-width: 2px;
+    background-size: cover;
+}
+
+button:hover {
+    background-color: #00C08D;
+    color: white;
+}
+
+.circular-image {
+    margin-bottom: 25px;
+    width: calc(25px + 25vmin);
+    height: calc(25px + 25vmin);
+    border-radius: 50%;
+    border-color: #00C08D;
+    border-width: 100px;
+    background-size: cover;
+    background-color: transparent;
+}
+
+.padded-span {
+    width: calc(100px + 100vmin);
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 25px;
+    padding-top: 5px;
+    color: #ffffff;
+    font-family: RM Typerighter old;
+    font-size: medium;
+}
+
+@media (max-width: 700px) {
+    .padded-span {
+        width: calc(60px + 60vmin);
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 25px;
+        padding-top: 5px;
+        color: #ffffff;
+        font-family: RM Typerighter old;
+        font-size: small;
+    }
+}
+
+/* Grid container */
+.grid-container {
+    display: grid;
+    gap: 20px;
+    padding: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    /* 3 cards per row by default */
+}
+
+/* Responsive for screens below 700px */
+@media (max-width: 700px) {
+    .grid-container {
+        display: grid;
+        gap: 20px;
+        padding: 30px;
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 cards per row */
+    }
+}
+
+/* Individual card styling */
+.grid-card {
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Set a fixed height for the card */
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Hover effect for scaling the card */
+.grid-card:hover {
+    transform: scale(1.1);
+    /* Make the card bigger */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Image styling */
+@media (max-width: 700px) {
+    .card-image {
+        width: calc(20px + 20vmin);
+        height: calc(10px + 10vmin);
+        border-radius: 500px;
+        transition: opacity 0.3s ease;
+    }
+}
+
+.card-image {
+    width: calc(50px + 50vmin);
+    height: calc(40px + 40vmin);
+    border-radius: 500px;
+    transition: opacity 0.3s ease;
+}
+
+/* Text inside the card */
+.card-text {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    /* Semi-transparent background */
+    overflow: visible;
+    padding: 5px calc(1px + 10vmin);
+    margin: 0px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    /* Initially hidden */
+    transition: opacity 0.3s ease;
+}
+
+/* On hover: show text and keep image visible */
+.grid-card:hover .card-text {
+    opacity: 1;
+}
+
+.grid-card:hover .card-image {
+    opacity: 1;
+    /* Ensure image remains fully visible */
+}
+
+.hidden-scrollbar {
+    overflow-y: scroll;
+    /* Enables vertical scrolling */
+}
+
+.hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Edge */
+}
+
+.hidden-scrollbar {
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+    scrollbar-width: none;
+    /* For Firefox */
+}
