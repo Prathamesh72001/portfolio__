@@ -2,6 +2,7 @@
   "name": "my_portfolio",
   "version": "1.0.0",
   "description": "This is my Portfolio.",
+  "homepage": "https://prathamesh72001.github.io/portfolio__/",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
