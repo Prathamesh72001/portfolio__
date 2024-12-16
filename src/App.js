@@ -27,6 +27,8 @@ function App() {
         };
     }, []);
 
+    const menuItems = ["Home", "About", "Projects", "Experience", "Resume"];
+
     const toggleDrawer = (open) => () => {
         setIsDrawerOpen(open);
     };
@@ -65,28 +67,22 @@ function App() {
                         </IconButton>
 
                         {/* Drawer */}
-                        <Drawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer(false)}>
+                        <Drawer
+                            anchor="right"
+                            open={isDrawerOpen}
+                            onClose={toggleDrawer(false)} // Close drawer when clicking outside
+                        >
                             <List>
-                                <ListItem button onClick={() =>
-                                    setActiveTab("tab1")} className={`menu ${activeTab === "tab1" ? "active" : ""}`}>
-                                    <ListItemText primary="Home" style={{ textAlign: "center", alignItems: "center", }} />
-                                </ListItem>
-                                <ListItem button onClick={() =>
-                                    setActiveTab("tab2")} className={`menu ${activeTab === "tab2" ? "active" : ""}`}>
-                                    <ListItemText primary="About" style={{ textAlign: "center", alignItems: "center", }} />
-                                </ListItem>
-                                <ListItem button onClick={() =>
-                                    setActiveTab("tab3")} className={`menu ${activeTab === "tab3" ? "active" : ""}`}>
-                                    <ListItemText primary="Projects" style={{ textAlign: "center", alignItems: "center", }} />
-                                </ListItem>
-                                <ListItem button onClick={() =>
-                                    setActiveTab("tab4")} className={`menu ${activeTab === "tab4" ? "active" : ""}`}>
-                                    <ListItemText primary="Experience" style={{ textAlign: "center", alignItems: "center", }} />
-                                </ListItem>
-                                <ListItem button onClick={() =>
-                                    setActiveTab("tab5")} className={`menu ${activeTab === "tab5" ? "active" : ""}`}>
-                                    <ListItemText primary="Resume" style={{ textAlign: "center", alignItems: "center", }} />
-                                </ListItem>
+                                {menuItems.map((item, index) => (
+                                    <div onClick={() => { setActiveTab("tab" + (index + 1)) }}><ListItem
+                                        button
+                                        key={index}
+                                        onClick={toggleDrawer(false)} // Close drawer when clicking a tab
+                                        className={`menu ${activeTab === "tab" + (index + 1) ? "active" : ""}`}
+                                    >
+                                        <ListItemText primary={item} />
+                                    </ListItem></div>
+                                ))}
                             </List>
                         </Drawer>
                     </div>}
