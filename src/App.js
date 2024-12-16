@@ -69,23 +69,23 @@ function App() {
                             <List>
                                 <ListItem button onClick={() =>
                                     setActiveTab("tab1")} className={`menu ${activeTab === "tab1" ? "active" : ""}`}>
-                                    <ListItemText primary="Home" style={{ textAlign: "start", alignItems: "start", }} />
+                                    <ListItemText primary="Home" style={{ textAlign: "center", alignItems: "center", }} />
                                 </ListItem>
                                 <ListItem button onClick={() =>
                                     setActiveTab("tab2")} className={`menu ${activeTab === "tab2" ? "active" : ""}`}>
-                                    <ListItemText primary="About" style={{ textAlign: "start", alignItems: "start", }} />
+                                    <ListItemText primary="About" style={{ textAlign: "center", alignItems: "center", }} />
                                 </ListItem>
                                 <ListItem button onClick={() =>
                                     setActiveTab("tab3")} className={`menu ${activeTab === "tab3" ? "active" : ""}`}>
-                                    <ListItemText primary="Projects" style={{ textAlign: "start", alignItems: "start", }} />
+                                    <ListItemText primary="Projects" style={{ textAlign: "center", alignItems: "center", }} />
                                 </ListItem>
                                 <ListItem button onClick={() =>
                                     setActiveTab("tab4")} className={`menu ${activeTab === "tab4" ? "active" : ""}`}>
-                                    <ListItemText primary="Experience" style={{ textAlign: "start", alignItems: "start", }} />
+                                    <ListItemText primary="Experience" style={{ textAlign: "center", alignItems: "center", }} />
                                 </ListItem>
                                 <ListItem button onClick={() =>
                                     setActiveTab("tab5")} className={`menu ${activeTab === "tab5" ? "active" : ""}`}>
-                                    <ListItemText primary="Resume" style={{ textAlign: "start", alignItems: "start", }} />
+                                    <ListItemText primary="Resume" style={{ textAlign: "center", alignItems: "center", }} />
                                 </ListItem>
                             </List>
                         </Drawer>
