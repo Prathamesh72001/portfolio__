@@ -121,13 +121,14 @@
 }
 
 .image-card {
-    width: calc(15px + 15vmin);
-    height: calc(15px + 15vmin);
-    cursor: pointer;
-    border-radius: 15px;
+    width: calc(25px + 25vmin);
+    height: calc(25px + 25vmin);
+    border-radius: 50%;
     border-color: #00C08D;
-    border-width: 2px;
+    border-width: 100px;
     background-size: cover;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 button:hover {
@@ -185,7 +186,7 @@ button:hover {
         display: grid;
         gap: 20px;
         padding: 30px;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 0.9fr);
         /* 2 cards per row */
     }
 }
