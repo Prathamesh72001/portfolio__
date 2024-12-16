@@ -81,33 +81,30 @@
     cursor: pointer;
 }
 
-.menu-item.active {
-    background-color: #00C08D;
-    color: white;
+.menu.active {
+    background-color: #00C08D !important;
+    color: white !important;
     padding: 8px 15px;
     /* Add padding for better spacing */
     border-radius: 5px;
     /* Rounded corners */
     font-family: Arial, sans-serif;
     font-size: calc(5px + 2vmin);
-    text-align: center;
-    /* Center text inside each tab */
-    cursor: pointer;
+    text-align: start;
 }
 
-.menu-item {
+.menu {
     background-color: #ffffff;
     /* Different color for active tab */
     color: #00C08D;
     font-weight: bold;
-    cursor: pointer;
     padding: 8px 15px;
     /* Add padding for better spacing */
     border-radius: 5px;
     /* Rounded corners */
     font-family: Arial, sans-serif;
     font-size: calc(5px + 2vmin);
-    text-align: center;
+    text-align: start;
 }
 
 .image-button {

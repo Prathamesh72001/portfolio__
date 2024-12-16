@@ -68,24 +68,24 @@ function App() {
                         <Drawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer(false)}>
                             <List>
                                 <ListItem button onClick={() =>
-                                    setActiveTab("tab1")} className={`menu-item ${activeTab === "tab1" ? "active" : ""}`}>
-                                    <ListItemText primary="Home" style={{ textAlign: "center", alignItems: "center", }} />
+                                    setActiveTab("tab1")} className={`menu ${activeTab === "tab1" ? "active" : ""}`}>
+                                    <ListItemText primary="Home" style={{ textAlign: "start", alignItems: "start", }} />
                                 </ListItem>
                                 <ListItem button onClick={() =>
-                                    setActiveTab("tab2")} className={`menu-item ${activeTab === "tab2" ? "active" : ""}`}>
-                                    <ListItemText primary="About" />
+                                    setActiveTab("tab2")} className={`menu ${activeTab === "tab2" ? "active" : ""}`}>
+                                    <ListItemText primary="About" style={{ textAlign: "start", alignItems: "start", }} />
                                 </ListItem>
                                 <ListItem button onClick={() =>
-                                    setActiveTab("tab3")} className={`menu-item ${activeTab === "tab3" ? "active" : ""}`}>
-                                    <ListItemText primary="Projects" />
+                                    setActiveTab("tab3")} className={`menu ${activeTab === "tab3" ? "active" : ""}`}>
+                                    <ListItemText primary="Projects" style={{ textAlign: "start", alignItems: "start", }} />
                                 </ListItem>
                                 <ListItem button onClick={() =>
-                                    setActiveTab("tab4")} className={`menu-item ${activeTab === "tab4" ? "active" : ""}`}>
-                                    <ListItemText primary="Experience" />
+                                    setActiveTab("tab4")} className={`menu ${activeTab === "tab4" ? "active" : ""}`}>
+                                    <ListItemText primary="Experience" style={{ textAlign: "start", alignItems: "start", }} />
                                 </ListItem>
                                 <ListItem button onClick={() =>
-                                    setActiveTab("tab5")} className={`menu-item ${activeTab === "tab5" ? "active" : ""}`}>
-                                    <ListItemText primary="Resume" />
+                                    setActiveTab("tab5")} className={`menu ${activeTab === "tab5" ? "active" : ""}`}>
+                                    <ListItemText primary="Resume" style={{ textAlign: "start", alignItems: "start", }} />
                                 </ListItem>
                             </List>
                         </Drawer>
@@ -126,7 +126,7 @@ function App() {
                 </div>}
 
                 {/*social bar*/}
-                {(activeTab != "tab3" && activeTab != "tab4") ? (<div className="social-bar">
+                {(activeTab == "tab1" || activeTab == "tab2") ? (<div className="social-bar">
                     <img
                         src='https://th.bing.com/th/id/OIP.k6lUqaSsHH2O9icUX0f_DQHaHa?w=191&h=191&c=7&r=0&o=5&dpr=1.5&pid=1.7'
                         className="image-button"
@@ -160,7 +160,7 @@ function App() {
                 </div>) : null}
 
                 {/*circular image*/}
-                {activeTab == "tab1" ? (<img
+                {(activeTab == "tab1" || activeTab == "tab2") ? (<img
                     className='circular-image'
                     src='https://scontent.fbom11-1.fna.fbcdn.net/v/t39.30808-1/423005933_2058542387854299_4010939541314133147_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=102&ccb=1-7&_nc_sid=0ecb9b&_nc_ohc=iGRG_cAEFucQ7kNvgFiuCVL&_nc_zt=24&_nc_ht=scontent.fbom11-1.fna&_nc_gid=AiIkfduI1vvUlJNM2YkooXu&oh=00_AYBQUTsXuaIsbnBIRvOnqre5XcVJV3zTBaEJHNrDUkD15w&oe=675DF456'
                 ></img>) : null}
