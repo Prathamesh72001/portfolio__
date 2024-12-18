@@ -6,13 +6,14 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 const cheerio = require('cheerio');
 import { Drawer, List, ListItem, ListItemText, IconButton, duration } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { IoArrowBackCircle, IoLogoGooglePlaystore, IoLogoAppleAppstore, IoGlobeSharp} from "react-icons/io5";
+import { IoArrowBackCircle, IoLogoGooglePlaystore, IoLogoAppleAppstore, IoGlobeSharp } from "react-icons/io5";
 
 function App() {
     const [activeTab, setActiveTab] = useState("tab1");
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [activeProject, setActiveProject] = useState(false);
+    const [activeExperience, setActiveExperience] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
@@ -51,19 +52,19 @@ function App() {
             if (key === 'android') {
                 return (
                     <a key={index} href={value} target="_blank" rel="noopener noreferrer">
-                        <IoLogoGooglePlaystore style={{ color: '#00C08D', height:"calc(5px + 5vmin)", width:"calc(5px + 5vmin)" }} />
+                        <IoLogoGooglePlaystore style={{ color: '#00C08D', height: "calc(5px + 5vmin)", width: "calc(5px + 5vmin)" }} />
                     </a>
                 );
             } else if (key === 'ios') {
                 return (
                     <a key={index} href={value} target="_blank" rel="noopener noreferrer">
-                        <IoLogoAppleAppstore style={{ color: '#00C08D', height:"calc(5px + 5vmin)", width:"calc(5px + 5vmin)" }} />
+                        <IoLogoAppleAppstore style={{ color: '#00C08D', height: "calc(5px + 5vmin)", width: "calc(5px + 5vmin)" }} />
                     </a>
                 );
             } else if (key === 'web') {
                 return (
                     <a key={index} href={value} target="_blank" rel="noopener noreferrer">
-                        <IoGlobeSharp style={{ color: '#00C08D', height:"calc(5px + 5vmin)", width:"calc(5px + 5vmin)" }} />
+                        <IoGlobeSharp style={{ color: '#00C08D', height: "calc(5px + 5vmin)", width: "calc(5px + 5vmin)" }} />
                     </a>
                 );
             }
@@ -74,16 +75,18 @@ function App() {
     const [activeProjectDetail, setActiveProjectDetail] = useState(project_cards[0]);
 
     const experience_cards = [
-        { id: 1, company_name: 'Aurum Proptech', link: "https://www.aurumproptech.in/", image: "https://www.aurumproptech.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.67e10ce2.png&w=640&q=75", duration: "Oct 2024 - Present", background_color: "#FFFFFF" },
-        { id: 2, company_name: 'Traverse TECLabs', link: "https://www.traversetec.co/", image: "https://cdn.prod.website-files.com/66af3993531437b23657a474/66bc49b3b9a7f97cc8bcba18_Traverse%20Tec%20Labs%20Logo.svg", duration: "Aug 2023 - Sep 2024", background_color: "#000000" },
-        { id: 3, company_name: 'Inspeero Technologies', link: "https://www.inspeero.com/", image: "https://media.designrush.com/agencies/226632/conversions/Inspeero-Technologies-logo-profile.jpg", duration: "July 2022 - Aug 2023", background_color: "#FFFFFF" },
+        { id: 1, company_name: 'Aurum Proptech', links: [{ web: "https://www.aurumproptech.in/" }], image: "https://www.aurumproptech.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.67e10ce2.png&w=640&q=75", duration: "Oct 2024 - Present", background_color: "#FFFFFF", role: "Analyst - Software Engineer", location: "Ghansoli, Maharashtra", description: "" },
+        { id: 2, company_name: 'Traverse TECLabs', links: [{ web: "https://www.traversetec.co/" }], image: "https://cdn.prod.website-files.com/66af3993531437b23657a474/66bc49b3b9a7f97cc8bcba18_Traverse%20Tec%20Labs%20Logo.svg", duration: "Aug 2023 - Sep 2024", background_color: "#000000", role: "Software Engineer", location: "Chembur, Maharashtra", description: "● Developed mobile applications using Flutter for a live client project.\n● Utilised Android development skills to enhance user experience, reducing app loading time by 30% and increasing user retention by 25%.\n● Implemented performance optimizations that resulted in a 40% decrease in app crash incidents, leading to a 15% increase in app store ratings.\n● Maintained app updates and bug fixes to ensure smooth functionality in the production environment." },
+        { id: 3, company_name: 'Inspeero Technologies', links: [{ web: "https://www.inspeero.com/" }], image: "https://media.designrush.com/agencies/226632/conversions/Inspeero-Technologies-logo-profile.jpg", duration: "July 2022 - Aug 2023", background_color: "#FFFFFF", role: "Software Engineer", location: "Vidyavihar, Maharashtra", description: "● Collaborated with cross-functional teams to develop and deploy 3 complex mobile applications, meeting all project deadlines and exceeding client expectations.\n● Conducted 20 comprehensive code reviews, resulting in a 25% reduction in bugs and enhancing overall code quality and performance.\n● Developed and maintained Android applications using Java and Kotlin, integrating modern design patterns such as MVP and MVVM, resulting in a 30% increase in app stability.\n● Designed and implemented Flutter-based mobile applications, leveraging UI frameworks and APIs to achieve a 40% improvement in app responsiveness and user satisfaction." },
     ];
+
+    const [activeExperienceDetail, setActiveExperienceDetail] = useState(experience_cards[0]);
 
     return (
         <div className="App">
             <header>
-                {!activeProject ?
-                    <div className='App-header'>
+                {(!activeProject && !activeExperience) ?
+                    (<div className='App-header'>
                         {/*tool bar*/}
                         {screenWidth < 1100 &&
                             <div style={{
@@ -206,83 +209,110 @@ function App() {
                         {activeTab == "tab2" && <TypingAnimation text="  I am an Android/Flutter developer with over 2.5 years of professional experience, specializing in building efficient and user-centric applications. My expertise includes developing cross-platform apps using Flutter, ensuring seamless performance and high-quality UI/UX. Alongside mobile development, I have experience with backend technologies like Node.js, frontend frameworks like React, and cloud platforms such as AWS. I am proficient in tools like Firebase for real-time database and authentication, and FlutterFlow for rapid prototyping. My technical skill set allows me to deliver scalable solutions and contribute effectively to end-to-end app development processes.  "
                             speed={10} isInLoop={false} />}
 
-                        {/*tab3 gridview*/}
-                        {(activeTab == "tab3") ?
-                            (<div className="hidden-scrollbar" style={{
-                                height: "90vh", // Define height for scrolling to work
-                                overflowY: "scroll", // Ensure the content can scroll vertically
-                            }}>
-                                <div className="grid-container">
-                                    {project_cards.map((card) => (
-                                        <div key={card.id} className="grid-card" onClick={() => {
-                                            setActiveProjectDetail(card);
-                                            setActiveProject(true);
-                                        }}
-                                        >
-                                            <img src={card.image} alt={card.title} className="card-image" style={{ objectFit: "cover" }} />
-                                            <div className="card-text">{card.title}</div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>) : null
-                        }
-
-                        {/*tab4 gridview*/}
-                        {(activeTab == "tab4") ?
-                            (<div className="hidden-scrollbar" style={{
-                                height: "90vh", // Define height for scrolling to work
-                                overflowY: "scroll", // Ensure the content can scroll vertically
-                            }}>
-                                <div className="grid-container">
+                        {(activeTab != "tab1" && activeTab != "tab2") ? <div className="hidden-scrollbar" style={{
+                            height: "90vh", // Define height for scrolling to work
+                            overflowY: "scroll", // Ensure the content can scroll vertically
+                        }}>
+                            {(activeTab == "tab3") ? (<div className="grid-container">
+                                {project_cards.map((card) => (
+                                    <div key={card.id} className="grid-card" onClick={() => {
+                                        setActiveProjectDetail(card);
+                                        setActiveProject(true);
+                                    }}
+                                    >
+                                        <img src={card.image} alt={card.title} className="card-image" style={{ objectFit: "cover" }} />
+                                        <div className="card-text">{card.title}</div>
+                                    </div>
+                                ))}</div>)
+                                :
+                                (activeTab == "tab4") ? (<div className="grid-container">
                                     {experience_cards.map((card) => (
-                                        <div key={card.id} className="grid-card" onClick={() => openLink(card.link)}
+                                        <div key={card.id} className="grid-card" onClick={() => {
+                                            setActiveExperienceDetail(card);
+                                            setActiveExperience(true);
+                                        }}
                                         >
                                             <img src={card.image} alt={card.company_name} className="card-image" style={{ objectFit: "scale-down", backgroundColor: card.background_color }} />
                                             <div className="card-text">{card.company_name}<h1 style={{ fontSize: "12px" }}>{card.duration}</h1></div>
                                         </div>
-                                    ))}
-                                </div>
-                            </div>) : null
-                        }
-
-                        {/*tab5 Resume Viewer*/}
-                        {activeTab == "tab5" && <div>
-                            <iframe src="https://drive.google.com/file/d/1-pTkwNKlS99HdnaqweUa4cSsnv0V_o4_/preview" style={{ height: "75vh", width: "100%" }}></iframe>
-                        </div>}
-                    </div>
+                                    ))}</div>)
+                                    :
+                                    (activeTab == "tab5") ? (<div><br /><iframe src="https://drive.google.com/file/d/1-pTkwNKlS99HdnaqweUa4cSsnv0V_o4_/preview" style={{ height: "75vh", width: "100%" }}></iframe></div>) : null}
+                        </div>
+                            :
+                            null}
+                    </div>)
                     :
-                    <div className='App-header'>
-                        <div style={{
-                            top: "15px",
-                            left: "15px",
-                            display: "flex",
-                            position: "absolute",
-                        }}>
-                            <IconButton style={{ color: "#00C08D", padding:"0px" }} onClick={() => setActiveProject(false)} edge="end">
-                                <IoArrowBackCircle style={{ height:"calc(5px + 5vmin)", width:"calc(5px + 5vmin)"}}/>
-                            </IconButton>
-                        </div>
-                        <div className="links-bar">
-                            {renderIcons(activeProjectDetail.links)}
-                        </div>
-                        <img
-                            style={{ marginTop: "25px" }}
-                            className='circular-image'
-                            src={activeProjectDetail.image}
-                        ></img>
-                        <span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "20px", marginLeft: "25px", marginRight: "25px" }}>{activeProjectDetail.title}</span>
-                        <span style={{ fontFamily: "Arial", fontSize: "20px", marginLeft: "25px", marginRight: "25px", marginTop: "25px" }}>{activeProjectDetail.role}</span>
-                        <span style={{ fontStyle: "italic", fontFamily: "Arial", fontSize: "15px", marginLeft: "25px", marginRight: "25px", marginBottom: "25px" }}>{activeProjectDetail.duration}</span>
-                        <div className="hidden-scrollbar" style={{
-                            height: "45vh", // Define height for scrolling to work
-                            overflowY: "scroll", // Ensure the content can scroll vertically
-                        }}><span style={{ fontFamily: "Arial", fontSize: "15px", marginLeft: "25px", marginRight: "25px", textAlign: "start" }}>{activeProjectDetail.description.split("\n").map((line, index) => (
-                            <React.Fragment key={index}>
-                                {line}
-                                <br />
-                            </React.Fragment>
-                        ))}</span></div>
-                    </div>}
+                    activeProject ?
+                        (<div className='App-header'>
+                            <div style={{
+                                top: "15px",
+                                left: "15px",
+                                display: "flex",
+                                position: "absolute",
+                            }}>
+                                <IconButton style={{ color: "#00C08D", padding: "0px" }} onClick={() => setActiveProject(false)} edge="end">
+                                    <IoArrowBackCircle style={{ height: "calc(5px + 5vmin)", width: "calc(5px + 5vmin)" }} />
+                                </IconButton>
+                            </div>
+                            <div className="links-bar">
+                                {renderIcons(activeProjectDetail.links)}
+                            </div>
+                            <img
+                                style={{ marginTop: "25px" }}
+                                className='circular-image'
+                                src={activeProjectDetail.image}
+                            ></img>
+                            <span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "20px", marginLeft: "25px", marginRight: "25px" }}>{activeProjectDetail.title}</span>
+                            <span style={{ fontFamily: "Arial", fontSize: "20px", marginLeft: "25px", marginRight: "25px", marginTop: "25px" }}>{activeProjectDetail.role}</span>
+                            <span style={{ fontStyle: "italic", fontFamily: "Arial", fontSize: "15px", marginLeft: "25px", marginRight: "25px", marginBottom: "25px" }}>{activeProjectDetail.duration}</span>
+                            <div className="hidden-scrollbar" style={{
+                                height: "45vh", // Define height for scrolling to work
+                                overflowY: "scroll", // Ensure the content can scroll vertically
+                            }}><span style={{ fontFamily: "Arial", fontSize: "15px", marginLeft: "25px", marginRight: "25px", textAlign: "start" }}>{activeProjectDetail.description.split("\n").map((line, index) => (
+                                <React.Fragment key={index}>
+                                    {line}
+                                    <br />
+                                </React.Fragment>
+                            ))}</span></div>
+                        </div>)
+                        :
+                        activeExperience ?
+                            (<div className='App-header'>
+                                <div style={{
+                                    top: "15px",
+                                    left: "15px",
+                                    display: "flex",
+                                    position: "absolute",
+                                }}>
+                                    <IconButton style={{ color: "#00C08D", padding: "0px" }} onClick={() => setActiveExperience(false)} edge="end">
+                                        <IoArrowBackCircle style={{ height: "calc(5px + 5vmin)", width: "calc(5px + 5vmin)" }} />
+                                    </IconButton>
+                                </div>
+                                <div className="links-bar">
+                                    {renderIcons(activeExperienceDetail.links)}
+                                </div>
+                                <img
+                                    style={{ marginTop: "25px" , backgroundColor: activeExperienceDetail.background_color, objectFit: "scale-down"}}
+                                    className='circular-image'
+                                    src={activeExperienceDetail.image}
+                                ></img>
+                                <span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "20px", marginLeft: "25px", marginRight: "25px" }}>{activeExperienceDetail.company_name}</span>
+                                <span style={{ fontFamily: "Arial", fontSize: "20px", marginLeft: "25px", marginRight: "25px", marginTop: "25px" }}>{activeExperienceDetail.role}</span>
+                                <span style={{ fontStyle: "italic", fontFamily: "Arial", fontSize: "15px", marginLeft: "25px", marginRight: "25px", marginBottom: "25px" }}>{activeExperienceDetail.location} : {activeExperienceDetail.duration}</span>
+                                <div className="hidden-scrollbar" style={{
+                                    height: "45vh", // Define height for scrolling to work
+                                    overflowY: "scroll", // Ensure the content can scroll vertically
+                                }}><span style={{ fontFamily: "Arial", fontSize: "15px", marginLeft: "25px", marginRight: "25px", textAlign: "start" }}>{activeExperienceDetail.description.split("\n").map((line, index) => (
+                                    <React.Fragment key={index}>
+                                        {line}
+                                        <br />
+                                    </React.Fragment>
+                                ))}</span></div>
+                            </div>)
+                            :
+                            null
+                }
             </header>
         </div>
     );
