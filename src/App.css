@@ -184,7 +184,7 @@ button:hover {
     display: grid;
     gap: 20px;
     padding: 30px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 0.8fr);
     /* 3 cards per row by default */
 }
 
@@ -194,7 +194,17 @@ button:hover {
         display: grid;
         gap: 20px;
         padding: 30px;
-        grid-template-columns: repeat(2, 0.9fr);
+        grid-template-columns: repeat(2, 0.8fr);
+        /* 2 cards per row */
+    }
+}
+
+@media (max-width: 1100px) and (min-width:701px) {
+    .grid-container {
+        display: grid;
+        gap: 20px;
+        padding: 30px;
+        grid-template-columns: repeat(3, 0.8fr);
         /* 2 cards per row */
     }
 }
