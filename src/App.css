@@ -35,6 +35,17 @@
     gap: 10px;
 }
 
+.links-bar {
+    top: 15px;
+    right: 15px;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+}
+
 .tool-bar {
     top: 15px;
     right: 15px;
@@ -259,11 +270,14 @@ button:hover {
 
 .hidden-scrollbar {
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
     /* Enables vertical scrolling */
 }
 
 .hidden-scrollbar::-webkit-scrollbar {
     display: none;
+    flex-direction: column;
     /* For Chrome, Safari, and Edge */
 }
 
@@ -271,5 +285,7 @@ button:hover {
     -ms-overflow-style: none;
     /* For Internet Explorer and Edge */
     scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
     /* For Firefox */
 }
