@@ -258,8 +258,8 @@ function App() {
                             display: "flex",
                             position: "absolute",
                         }}>
-                            <IconButton style={{ color: "#00C08D" }} onClick={() => setActiveProject(false)} edge="end">
-                                <IoArrowBackCircle />
+                            <IconButton style={{ color: "#00C08D", padding:"0px" }} onClick={() => setActiveProject(false)} edge="end">
+                                <IoArrowBackCircle style={{ height:"calc(5px + 5vmin)", width:"calc(5px + 5vmin)"}}/>
                             </IconButton>
                         </div>
                         <div className="links-bar">
