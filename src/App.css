@@ -188,8 +188,17 @@ button:hover {
     /* 3 cards per row by default */
 }
 
-/* Responsive for screens below 700px */
-@media (max-width: 700px) {
+@media (max-width: 500px){
+    .grid-container {
+        display: grid;
+        gap: 20px;
+        padding: 30px;
+        grid-template-columns: repeat(1, 0.9fr);
+        /* 2 cards per row */
+    }
+}
+
+@media (max-width: 900px) and (min-width:501px){
     .grid-container {
         display: grid;
         gap: 20px;
@@ -199,7 +208,7 @@ button:hover {
     }
 }
 
-@media (max-width: 1100px) and (min-width:701px) {
+@media (max-width: 1100px) and (min-width:901px) {
     .grid-container {
         display: grid;
         gap: 20px;
@@ -232,15 +241,6 @@ button:hover {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Image styling */
-@media (max-width: 700px) {
-    .card-image {
-        width: calc(20px + 20vmin);
-        height: calc(10px + 10vmin);
-        border-radius: 500px;
-        transition: opacity 0.3s ease;
-    }
-}
 
 .card-image {
     width: calc(50px + 50vmin);
