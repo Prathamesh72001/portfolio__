@@ -290,3 +290,37 @@ button:hover {
     flex-direction: column;
     /* For Firefox */
 }
+
+.rounded-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    /* Rounded corners */
+    background-color: #00C08D;
+    /* Green background */
+    color: white;
+    /* White text */
+    font-size: 16px;
+    /* Text size */
+    font-weight: bold;
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* Shadow effect */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* Smooth hover effect */
+}
+
+.rounded-button:hover {
+    transform: translateY(-2px);
+    /* Slight upward movement */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    /* Enhanced shadow on hover */
+}
+
+.rounded-button:active {
+    transform: translateY(1px);
+    /* Slight downward movement on click */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    /* Reduced shadow on click */
+}

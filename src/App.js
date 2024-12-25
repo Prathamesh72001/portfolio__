@@ -31,7 +31,18 @@ function App() {
 
     const words = ["  Welcome to My Portfolioo  ", "  Android Developerr  ", "  Flutter Developerr  ", "  Full Stack Developerr  ", "  React Developerr  "]
 
-    const menuItems = ["Home", "About", "Projects", "Experience", "Resume"];
+    const menuItems = ["Home", "About", "Skills", "Projects", "Experiences"];
+
+    const skill_cards = [
+        { id: 1, title: 'Android', image: "https://th.bing.com/th/id/OIP.NT5qCPKm7zSHSxV2eHpxIwHaEK?pid=ImgDet&w=178&h=100&c=7&dpr=1.5" },
+        { id: 2, title: 'Flutter', image: "https://www.daily.co/blog/content/images/2023/07/Flutter-feature.png" },
+        { id: 3, title: 'Java', image: "https://th.bing.com/th?q=Java.home+PNG&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" },
+        { id: 5, title: 'Dart', image: "https://th.bing.com/th/id/OIP.9IxwivMIXUjFafeGM3rxRQHaEK?w=250&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
+        { id: 6, title: 'Firebase', image: "https://th.bing.com/th/id/OIP.U2y3qLKfX74b2yDbCyBGLgHaHa?w=178&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
+        { id: 7, title: 'AWS', image: "https://th.bing.com/th/id/OIP.b_al7C5p26tbZG4sy-CWqwHaFj?w=228&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
+        { id: 9, title: 'React', image: "https://th.bing.com/th/id/OIP.gMUAfrHInWGo6p_QSrEVAwHaD8?w=289&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
+        { id: 10, title: 'Node', image: "https://th.bing.com/th/id/OIP.6TbzL0Ymm71EZPq7VqfdcQHaFO?w=228&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
+    ];
 
     const toggleDrawer = (open) => () => {
         setIsDrawerOpen(open);
@@ -198,9 +209,9 @@ function App() {
                         ></img>) : null}
 
                         {/*tab titles*/}
-                        {activeTab == "tab3" && <span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "35px", marginLeft: "25px", marginRight: "25px" }}>Projects</span>}
-                        {activeTab == "tab4" && <span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "35px", marginLeft: "25px", marginRight: "25px" }}>Experience</span>}
-                        {activeTab == "tab5" && <span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "35px", marginLeft: "25px", marginRight: "25px" }}>Resume</span>}
+                        {activeTab == "tab4" && <span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "35px", marginLeft: "25px", marginRight: "25px" }}>Projects</span>}
+                        {activeTab == "tab5" && <span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "35px", marginLeft: "25px", marginRight: "25px" }}>Experience</span>}
+                        {activeTab == "tab3" && <span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "35px", marginLeft: "25px", marginRight: "25px" }}>Skills</span>}
 
                         {/*tab1 & tab2 subtitles*/}
                         {(activeTab == "tab1" || activeTab == "tab2") ? (<span style={{ color: "#ffffff", fontFamily: "Arial", marginLeft: "25px", marginRight: "25px", fontSize: "20px" }}>Hello I'm</span>) : null}
@@ -211,11 +222,14 @@ function App() {
                         {activeTab == "tab2" && <TypingAnimation texts={["  I am an Android/Flutter developer with over 2.5 years of professional experience, specializing in building efficient and user-centric applications. My expertise includes developing cross-platform apps using Flutter, ensuring seamless performance and high-quality UI/UX. Alongside mobile development, I have experience with backend technologies like Node.js, frontend frameworks like React, and cloud platforms such as AWS. I am proficient in tools like Firebase for real-time database and authentication, and FlutterFlow for rapid prototyping. My technical skill set allows me to deliver scalable solutions and contribute effectively to end-to-end app development processes.  "]}
                             speed={10} isInLoop={false} pause={3000} />}
 
+                        {(activeTab == "tab1" || activeTab == "tab2") ? <button class="rounded-button" onClick={() => { openLink("https://drive.google.com/file/d/1-pTkwNKlS99HdnaqweUa4cSsnv0V_o4_/preview"); }}>Download Resume</button> : null}
+
+
                         {(activeTab != "tab1" && activeTab != "tab2") ? <div className="hidden-scrollbar" style={{
                             height: "90vh", // Define height for scrolling to work
                             overflowY: "scroll", // Ensure the content can scroll vertically
                         }}>
-                            {(activeTab == "tab3") ? (<div className="grid-container">
+                            {(activeTab == "tab4") ? (<div className="grid-container">
                                 {project_cards.map((card) => (
                                     <div key={card.id} className="grid-card" onClick={() => {
                                         setActiveProjectDetail(card);
@@ -227,7 +241,7 @@ function App() {
                                     </div>
                                 ))}</div>)
                                 :
-                                (activeTab == "tab4") ? (<div className="grid-container">
+                                (activeTab == "tab5") ? (<div className="grid-container">
                                     {experience_cards.map((card) => (
                                         <div key={card.id} className="grid-card" onClick={() => {
                                             setActiveExperienceDetail(card);
@@ -239,7 +253,13 @@ function App() {
                                         </div>
                                     ))}</div>)
                                     :
-                                    (activeTab == "tab5") ? (<div><br /><iframe src="https://drive.google.com/file/d/1-pTkwNKlS99HdnaqweUa4cSsnv0V_o4_/preview" style={{ height: "75vh", width: "100%" }}></iframe></div>) : null}
+                                    (activeTab == "tab3") ? (<div className="grid-container">
+                                        {skill_cards.map((card) => (
+                                            <div key={card.id} className="grid-card">
+                                                <img src={card.image} alt={card.title} className="card-image" style={{ objectFit: "cover" }} />
+                                                <div className="card-text">{card.title}</div>
+                                            </div>
+                                        ))}</div>) : null}
                         </div>
                             :
                             null}
