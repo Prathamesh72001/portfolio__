@@ -29,6 +29,8 @@ function App() {
         };
     }, []);
 
+    const words = ["  Welcome to My Portfolioo  ", "  Android Developerr  ", "  Flutter Developerr  ", "  Full Stack Developerr  ", "  React Developerr  "]
+
     const menuItems = ["Home", "About", "Projects", "Experience", "Resume"];
 
     const toggleDrawer = (open) => () => {
@@ -38,13 +40,6 @@ function App() {
     const openLink = (url) => {
         window.open(url, "_blank"); // Opens in a new tab
     };
-
-    const project_cards = [
-        { id: 1, title: 'iTAP Entertainment\n& Gaming', links: [{ android: "https://play.google.com/store/apps/details?id=com.app.itap&pcampaignid=web_share" }, { ios: "https://apps.apple.com/in/app/itap-entertainment-gaming/id6443938485" }, { web: "https://stream.itap.online/" }], image: "https://play-lh.googleusercontent.com/WGGw9sdmGBhWqfhDO54FiSmA__6jR8Cft-M9jutBzzprcMYakmWNANT2HMelsc459A=w480-h960-rw", duration: "May 2023 - October 2024", role: "Android & Flutter Developer", description: "● Played a pivotal role in the development of iTap, a cutting-edge entertainment platform.\n● Proficient in Android development, specialising in creating captivating entertainment experiences, leading toa 25% increase in user engagement and a 20% rise in app ratings on the Google Play Store.\n● Well-versed in iOs development, contributing to the diverse range of content offered on the iTap platform, resulting in a 15% expansion of the user base on iOS devices.\n● Competent in web development, enhancing user experience and accessibility for iTap's web version, resulting in a 30% increase in website traffic and a 25% decrease in bounce rate.\n● Strong background in software development, ensuring the robustness and reliability of iTap across all platforms, leading to a 40% decrease in app crashes and a 20% increase in overall user satisfaction." },
-        { id: 2, title: 'Canvia: Art Gallery\nat home', links: [{ android: "https://play.google.com/store/apps/details?id=com.palacio.canvia&pcampaignid=web_share" }], image: "https://play-lh.googleusercontent.com/Ztrvf9znaktVCS6J36tPPJI73RC-Sc-FCBQFZ3Hw6u7-DE_rPv-DOi47NP3a4Jqm7Q=w480-h960-rw", duration: "March 2023 - May 2023", role: "Android Developer", description: "● Spearheaded the development of Canvia, a cutting-edge smart art frame loT project aimed at revolutionising the art viewing experience.\n● Specialised in Internet of Things (IoT) development, ensuring seamless connectivity and functionality of Canvia's smart features.\n● Led Android development efforts for the Canvia mobile application, resulting in a 20% increase in app downloads and a 15% improvement in user retention rates within the first three months of release." },
-        { id: 3, title: 'Insta Parenting App:\nPlay-Way', links: [{ android: "https://play.google.com/store/apps/details?id=com.parenting.instaparenting&pcampaignid=web_share" }], image: "https://play-lh.googleusercontent.com/KyP59LujVr_v9ZwKQVkfwkb4rCaamItgxxPdsIvApYOXvupWQYYjEFEBwQMDK5JlkADJ=w480-h960-rw", duration: "January 2023 - March 2023", role: "Android Developer", description: "● Created a user-friendly platform designed to provide an engaging and delightful learning experience for children while laying a strong foundation for academic success.\n● Specialised in Android development to ensure seamless functionality and optimal performance of the Jyppzer Kids mobile application, resulting in a 25% decrease in app loading time and a 30% increase in user engagement, as evidenced by a rise in daily active users." },
-        { id: 4, title: 'Aurum KuberX: Loans & Partners', links: [{ android: "https://play.google.com/store/apps/details?id=com.aurumsoftwaresoultions.aurumkuberxapp&pcampaignid=web_share" }, { ios: "https://apps.apple.com/in/app/aurum-kuberx-loans-partners/id6447743833" }, { web: "https://www.aurumkuberx.com/" }], image: "https://play-lh.googleusercontent.com/j1NATpTKEBmKCAvcI_v1yYn1lFKPNpfz6AzMukizoRSJzJwuGb5Ijs6PjppDoHSPd_c=w480-h960-rw", duration: "October 2023 - Present", role: "Full-Stack Developer", description: "" },
-    ];
 
     const renderIcons = (links) => {
         return links.map((link, index) => {
@@ -71,6 +66,13 @@ function App() {
             return null;
         });
     };
+
+    const project_cards = [
+        { id: 1, title: 'iTAP Entertainment\n& Gaming', links: [{ android: "https://play.google.com/store/apps/details?id=com.app.itap&pcampaignid=web_share" }, { ios: "https://apps.apple.com/in/app/itap-entertainment-gaming/id6443938485" }, { web: "https://stream.itap.online/" }], image: "https://play-lh.googleusercontent.com/WGGw9sdmGBhWqfhDO54FiSmA__6jR8Cft-M9jutBzzprcMYakmWNANT2HMelsc459A=w480-h960-rw", duration: "May 2023 - October 2024", role: "Android & Flutter Developer", description: "● Played a pivotal role in the development of iTap, a cutting-edge entertainment platform.\n● Proficient in Android development, specialising in creating captivating entertainment experiences, leading toa 25% increase in user engagement and a 20% rise in app ratings on the Google Play Store.\n● Well-versed in iOs development, contributing to the diverse range of content offered on the iTap platform, resulting in a 15% expansion of the user base on iOS devices.\n● Competent in web development, enhancing user experience and accessibility for iTap's web version, resulting in a 30% increase in website traffic and a 25% decrease in bounce rate.\n● Strong background in software development, ensuring the robustness and reliability of iTap across all platforms, leading to a 40% decrease in app crashes and a 20% increase in overall user satisfaction." },
+        { id: 2, title: 'Canvia: Art Gallery\nat home', links: [{ android: "https://play.google.com/store/apps/details?id=com.palacio.canvia&pcampaignid=web_share" }], image: "https://play-lh.googleusercontent.com/Ztrvf9znaktVCS6J36tPPJI73RC-Sc-FCBQFZ3Hw6u7-DE_rPv-DOi47NP3a4Jqm7Q=w480-h960-rw", duration: "March 2023 - May 2023", role: "Android Developer", description: "● Spearheaded the development of Canvia, a cutting-edge smart art frame loT project aimed at revolutionising the art viewing experience.\n● Specialised in Internet of Things (IoT) development, ensuring seamless connectivity and functionality of Canvia's smart features.\n● Led Android development efforts for the Canvia mobile application, resulting in a 20% increase in app downloads and a 15% improvement in user retention rates within the first three months of release." },
+        { id: 3, title: 'Insta Parenting App:\nPlay-Way', links: [{ android: "https://play.google.com/store/apps/details?id=com.parenting.instaparenting&pcampaignid=web_share" }], image: "https://play-lh.googleusercontent.com/KyP59LujVr_v9ZwKQVkfwkb4rCaamItgxxPdsIvApYOXvupWQYYjEFEBwQMDK5JlkADJ=w480-h960-rw", duration: "January 2023 - March 2023", role: "Android Developer", description: "● Created a user-friendly platform designed to provide an engaging and delightful learning experience for children while laying a strong foundation for academic success.\n● Specialised in Android development to ensure seamless functionality and optimal performance of the Jyppzer Kids mobile application, resulting in a 25% decrease in app loading time and a 30% increase in user engagement, as evidenced by a rise in daily active users." },
+        { id: 4, title: 'Aurum KuberX: Loans & Partners', links: [{ android: "https://play.google.com/store/apps/details?id=com.aurumsoftwaresoultions.aurumkuberxapp&pcampaignid=web_share" }, { ios: "https://apps.apple.com/in/app/aurum-kuberx-loans-partners/id6447743833" }, { web: "https://www.aurumkuberx.com/" }], image: "https://play-lh.googleusercontent.com/j1NATpTKEBmKCAvcI_v1yYn1lFKPNpfz6AzMukizoRSJzJwuGb5Ijs6PjppDoHSPd_c=w480-h960-rw", duration: "October 2023 - Present", role: "Full-Stack Developer", description: "" },
+    ];
 
     const [activeProjectDetail, setActiveProjectDetail] = useState(project_cards[0]);
 
@@ -205,9 +207,9 @@ function App() {
                         {(activeTab == "tab1" || activeTab == "tab2") ? (<span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "30px", marginLeft: "25px", marginRight: "25px" }}>Prathamesh Sawardekar</span>) : null}
 
                         {/*tab1 & tab2 animated_subtitles*/}
-                        {activeTab == "tab1" && <TypingAnimation text="  Welcome to My Portfolioo  " speed={100} isInLoop={true} />}
-                        {activeTab == "tab2" && <TypingAnimation text="  I am an Android/Flutter developer with over 2.5 years of professional experience, specializing in building efficient and user-centric applications. My expertise includes developing cross-platform apps using Flutter, ensuring seamless performance and high-quality UI/UX. Alongside mobile development, I have experience with backend technologies like Node.js, frontend frameworks like React, and cloud platforms such as AWS. I am proficient in tools like Firebase for real-time database and authentication, and FlutterFlow for rapid prototyping. My technical skill set allows me to deliver scalable solutions and contribute effectively to end-to-end app development processes.  "
-                            speed={10} isInLoop={false} />}
+                        {activeTab == "tab1" && <TypingAnimation texts={words} speed={100} isInLoop={true} pause={3000} />}
+                        {activeTab == "tab2" && <TypingAnimation texts={["  I am an Android/Flutter developer with over 2.5 years of professional experience, specializing in building efficient and user-centric applications. My expertise includes developing cross-platform apps using Flutter, ensuring seamless performance and high-quality UI/UX. Alongside mobile development, I have experience with backend technologies like Node.js, frontend frameworks like React, and cloud platforms such as AWS. I am proficient in tools like Firebase for real-time database and authentication, and FlutterFlow for rapid prototyping. My technical skill set allows me to deliver scalable solutions and contribute effectively to end-to-end app development processes.  "]}
+                            speed={10} isInLoop={false} pause={3000} />}
 
                         {(activeTab != "tab1" && activeTab != "tab2") ? <div className="hidden-scrollbar" style={{
                             height: "90vh", // Define height for scrolling to work
@@ -293,7 +295,7 @@ function App() {
                                     {renderIcons(activeExperienceDetail.links)}
                                 </div>
                                 <img
-                                    style={{ marginTop: "25px" , backgroundColor: activeExperienceDetail.background_color, objectFit: "scale-down"}}
+                                    style={{ marginTop: "25px", backgroundColor: activeExperienceDetail.background_color, objectFit: "scale-down" }}
                                     className='circular-image'
                                     src={activeExperienceDetail.image}
                                 ></img>
@@ -318,27 +320,32 @@ function App() {
     );
 }
 
-const TypingAnimation = ({ text, speed, isInLoop }) => {
+const TypingAnimation = ({ texts, speed, pause, isInLoop }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [displayedText, setDisplayedText] = useState("");
     const [isTyping, setIsTyping] = useState(true);
 
     useEffect(() => {
-        let currentIndex = 0;
+        let textIndex = currentIndex;
+        let charIndex = 0;
         let interval;
 
         const typeText = () => {
-            if (currentIndex < text.trim().length) {
-                setDisplayedText((prev) => prev + text[currentIndex]);
-                currentIndex++;
+            const currentText = texts[textIndex];
+            if (charIndex < currentText.trim().length) {
+                setDisplayedText((prev) => prev + currentText[charIndex]);
+                charIndex++;
             } else {
-                if (isInLoop) {
-                    clearInterval(interval);
+                // Typing for the current text is complete
+                clearInterval(interval);
+                if (isInLoop || textIndex < texts.length - 1) {
                     setTimeout(() => {
-                        // Clear the text and restart typing animation after a short delay
                         setDisplayedText("");
-                        currentIndex = 0;
+                        charIndex = 0;
+                        textIndex = (textIndex + 1) % texts.length; // Move to the next text
+                        setCurrentIndex(textIndex);
                         interval = setInterval(typeText, speed);
-                    }, 3000); // Pause for 1 second before restarting
+                    }, pause); // Pause before moving to the next text
                 }
             }
         };
@@ -347,10 +354,10 @@ const TypingAnimation = ({ text, speed, isInLoop }) => {
             interval = setInterval(typeText, speed);
         }
 
-        return () => clearInterval(interval); // Clean up the interval on component unmount
-    }, [text, speed, isTyping]);
+        return () => clearInterval(interval); // Clean up on component unmount
+    }, [texts, speed, pause, isInLoop, isTyping, currentIndex]);
 
-    return <div className='padded-span'><span>{displayedText}</span></div>;
+    return <div className="padded-span"><span>{displayedText}</span></div>;
 };
 
 export default App;
