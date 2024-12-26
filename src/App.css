@@ -180,31 +180,22 @@ button:hover {
 }
 
 /* Grid container */
+
 .grid-container {
     display: grid;
     gap: 20px;
     padding: 30px;
-    grid-template-columns: repeat(4, 0.9fr);
+    grid-template-columns: repeat(3, 0.9fr);
     /* 3 cards per row by default */
 }
 
 
-@media (max-width: 900px){
+@media (max-width: 750px){
     .grid-container {
         display: grid;
         gap: 20px;
         padding: 30px;
         grid-template-columns: repeat(2, 0.9fr);
-        /* 2 cards per row */
-    }
-}
-
-@media (max-width: 1100px) and (min-width:901px) {
-    .grid-container {
-        display: grid;
-        gap: 20px;
-        padding: 30px;
-        grid-template-columns: repeat(3, 0.9r);
         /* 2 cards per row */
     }
 }
@@ -323,4 +314,17 @@ button:hover {
     /* Slight downward movement on click */
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
     /* Reduced shadow on click */
+}
+
+.cursor {
+    display: inline-block;
+    width: 1px;
+    background-color: black;
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }

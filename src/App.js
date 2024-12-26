@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
@@ -37,11 +37,11 @@ function App() {
         { id: 1, title: 'Android', image: "https://th.bing.com/th/id/OIP.NT5qCPKm7zSHSxV2eHpxIwHaEK?pid=ImgDet&w=178&h=100&c=7&dpr=1.5" },
         { id: 2, title: 'Flutter', image: "https://www.daily.co/blog/content/images/2023/07/Flutter-feature.png" },
         { id: 3, title: 'Java', image: "https://th.bing.com/th?q=Java.home+PNG&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" },
-        { id: 5, title: 'Dart', image: "https://th.bing.com/th/id/OIP.9IxwivMIXUjFafeGM3rxRQHaEK?w=250&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
-        { id: 6, title: 'Firebase', image: "https://th.bing.com/th/id/OIP.U2y3qLKfX74b2yDbCyBGLgHaHa?w=178&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
-        { id: 7, title: 'AWS', image: "https://th.bing.com/th/id/OIP.b_al7C5p26tbZG4sy-CWqwHaFj?w=228&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
+        { id: 5, title: 'Dart', image: "https://th.bing.com/th/id/OIP.HV56KwmRfBGXeCVU4xXleQHaFj?w=245&h=184&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
+        { id: 6, title: 'Firebase', image: "https://th.bing.com/th/id/OIP.7lDnfWyu2yN7xzb0BWA1qwHaHa?w=158&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
+        { id: 7, title: 'AWS', image: "https://th.bing.com/th/id/OIP.XOfy2isupxYRTO4sF2g9OgHaEh?w=309&h=189&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
         { id: 9, title: 'React', image: "https://th.bing.com/th/id/OIP.gMUAfrHInWGo6p_QSrEVAwHaD8?w=289&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
-        { id: 10, title: 'Node', image: "https://th.bing.com/th/id/OIP.6TbzL0Ymm71EZPq7VqfdcQHaFO?w=228&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
+        { id: 10, title: 'Node', image: "https://th.bing.com/th/id/OIP.FGXuhei3vz5S-GC38AwDbgHaFj?w=242&h=181&c=7&r=0&o=5&dpr=1.5&pid=1.7" },
     ];
 
     const toggleDrawer = (open) => () => {
@@ -101,7 +101,7 @@ function App() {
                 {(!activeProject && !activeExperience) ?
                     (<div className='App-header'>
                         {/*tool bar*/}
-                        {screenWidth < 1100 &&
+                        {screenWidth < 1300 &&
                             <div style={{
                                 top: "5px",
                                 right: "25px",
@@ -133,7 +133,7 @@ function App() {
                                     </List>
                                 </Drawer>
                             </div>}
-                        {screenWidth >= 1100 && <div className="tool-bar">
+                        {screenWidth >= 1300 && <div className="tool-bar">
                             <div
                                 className={`tab ${activeTab === "tab1" ? "active" : ""}`}
                                 onClick={() =>
@@ -152,19 +152,19 @@ function App() {
                                 className={`tab ${activeTab === "tab3" ? "active" : ""}`}
                                 onClick={() => setActiveTab("tab3")}
                             >
-                                Projects
+                                Skills
                             </div>
                             <div
                                 className={`tab ${activeTab === "tab4" ? "active" : ""}`}
                                 onClick={() => setActiveTab("tab4")}
                             >
-                                Experience
+                                Projects
                             </div>
                             <div
                                 className={`tab ${activeTab === "tab5" ? "active" : ""}`}
                                 onClick={() => setActiveTab("tab5")}
                             >
-                                Resume
+                                Experience
                             </div>
                         </div>}
 
@@ -219,7 +219,7 @@ function App() {
 
                         {/*tab1 & tab2 animated_subtitles*/}
                         {activeTab == "tab1" && <TypingAnimation texts={words} speed={100} isInLoop={true} pause={3000} />}
-                        {activeTab == "tab2" && <TypingAnimation texts={["  I am an Android/Flutter developer with over 2.5 years of professional experience, specializing in building efficient and user-centric applications. My expertise includes developing cross-platform apps using Flutter, ensuring seamless performance and high-quality UI/UX. Alongside mobile development, I have experience with backend technologies like Node.js, frontend frameworks like React, and cloud platforms such as AWS. I am proficient in tools like Firebase for real-time database and authentication, and FlutterFlow for rapid prototyping. My technical skill set allows me to deliver scalable solutions and contribute effectively to end-to-end app development processes.  "]}
+                        {activeTab == "tab2" && <TypingAnimation texts={["  I am an Android/Flutter developer with over 2.5 years of professional experience, specializing in building efficient and user-centric applications. My expertise includes developing cross-platform apps using Flutter, ensuring seamless performance and high-quality UI/UX. Alongside mobile development, I have experience with backend technologies like Node.js, frontend frameworks like React, and cloud platforms such as AWS. I am proficient in tools like Firebase for real-time database and authentication, and FlutterFlow for rapid prototyping. My technical skill set allows me to deliver scalable solutions and contribute effectively to end-to-end app development processes..  "]}
                             speed={10} isInLoop={false} pause={3000} />}
 
                         {(activeTab == "tab1" || activeTab == "tab2") ? <button class="rounded-button" onClick={() => { openLink("https://drive.google.com/file/d/1-pTkwNKlS99HdnaqweUa4cSsnv0V_o4_/preview"); }}>Download Resume</button> : null}
@@ -343,41 +343,35 @@ function App() {
 const TypingAnimation = ({ texts, speed, pause, isInLoop }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [displayedText, setDisplayedText] = useState("");
-    const [isTyping, setIsTyping] = useState(true);
+    const charIndexRef = useRef(0);
+    const isTypingRef = useRef(true);
+    const intervalRef = useRef(null);
 
     useEffect(() => {
-        let textIndex = currentIndex;
-        let charIndex = 0;
-        let interval;
-
         const typeText = () => {
-            const currentText = texts[textIndex];
-            if (charIndex < currentText.trim().length) {
-                setDisplayedText((prev) => prev + currentText[charIndex]);
-                charIndex++;
+            const currentText = texts[currentIndex];
+            if (charIndexRef.current < currentText.trim().length) {
+                setDisplayedText((prev) => prev + currentText[charIndexRef.current]);
+                charIndexRef.current++;
             } else {
                 // Typing for the current text is complete
-                clearInterval(interval);
-                if (isInLoop || textIndex < texts.length - 1) {
+                clearInterval(intervalRef.current);
+                if (isInLoop || currentIndex < texts.length - 1) {
                     setTimeout(() => {
                         setDisplayedText("");
-                        charIndex = 0;
-                        textIndex = (textIndex + 1) % texts.length; // Move to the next text
-                        setCurrentIndex(textIndex);
-                        interval = setInterval(typeText, speed);
-                    }, pause); // Pause before moving to the next text
+                        charIndexRef.current = 0;
+                        setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+                    }, pause);
                 }
             }
         };
 
-        if (isTyping) {
-            interval = setInterval(typeText, speed);
-        }
+        intervalRef.current = setInterval(typeText, speed);
+        return () => clearInterval(intervalRef.current); // Clean up on component unmount
+    }, [texts, speed, pause, isInLoop, currentIndex]);
 
-        return () => clearInterval(interval); // Clean up on component unmount
-    }, [texts, speed, pause, isInLoop, isTyping, currentIndex]);
-
-    return <div className="padded-span"><span>{displayedText}</span></div>;
+    return <div className="padded-span"><span>{displayedText}</span><span className="cursor">|</span></div>;
 };
+
 
 export default App;
