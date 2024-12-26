@@ -226,7 +226,7 @@ function App() {
 
 
                         {(activeTab != "tab1" && activeTab != "tab2") ? <div className="hidden-scrollbar" style={{
-                            height: "90vh", // Define height for scrolling to work
+                            height: "95vh", // Define height for scrolling to work
                             overflowY: "scroll", // Ensure the content can scroll vertically
                         }}>
                             {(activeTab == "tab4") ? (<div className="grid-container">
