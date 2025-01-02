@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
-import { Worker, Viewer } from '@react-pdf-viewer/core';
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; import { Worker, Viewer } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 const cheerio = require('cheerio');
@@ -78,11 +79,64 @@ function App() {
         });
     };
 
+    const ProjectCard = ({ project }) => {
+        const images = project.project_images.length > 0 ? project.project_images : null;
+
+        const chunkArray = (array, size) => {
+            const result = [];
+            for (let i = 0; i < array.length; i += size) {
+                result.push(array.slice(i, i + size));
+            }
+            return result;
+        };
+
+        const imageChunks = images ? chunkArray(images, 3) : [];
+
+        return (
+
+            <div className="image-slider">
+                <br />
+                {images ? (
+                    <Carousel showArrows={false}
+                        infiniteLoop={true}
+                        showThumbs={false}
+                        autoPlay={true}
+                        interval={3000} // Auto-scroll interval set to 3 seconds
+                        stopOnHover={true} // Pause when hovering
+                        showStatus={false}>
+                        {imageChunks.map((chunk, index) => (
+                            <div key={index} className="slide-container">
+                                {chunk.map((image, idx) => (
+                                    <img
+                                        key={idx}
+                                        src={image}
+                                        alt={`Project ${project.id} image ${index * 3 + idx + 1}`}
+                                        style={{
+                                            height: "200px",
+                                            width: "auto",
+                                            margin: "0 10px",
+                                            objectFit: "cover",
+                                        }}
+                                    />
+                                ))}
+                            </div>
+                        ))}
+                    </Carousel>
+                ) : (
+                    <div className="no-images">
+                        <p>No Images Found</p>
+                    </div>
+                )}
+                <br />
+            </div>
+        );
+    };
+
     const project_cards = [
-        { id: 1, title: 'iTAP Entertainment\n& Gaming', links: [{ android: "https://play.google.com/store/apps/details?id=com.app.itap&pcampaignid=web_share" }, { ios: "https://apps.apple.com/in/app/itap-entertainment-gaming/id6443938485" }, { web: "https://stream.itap.online/" }], image: "https://play-lh.googleusercontent.com/WGGw9sdmGBhWqfhDO54FiSmA__6jR8Cft-M9jutBzzprcMYakmWNANT2HMelsc459A=w480-h960-rw", duration: "May 2023 - October 2024", role: "Android & Flutter Developer", description: "● Played a pivotal role in the development of iTap, a cutting-edge entertainment platform.\n● Proficient in Android development, specialising in creating captivating entertainment experiences, leading toa 25% increase in user engagement and a 20% rise in app ratings on the Google Play Store.\n● Well-versed in iOs development, contributing to the diverse range of content offered on the iTap platform, resulting in a 15% expansion of the user base on iOS devices.\n● Competent in web development, enhancing user experience and accessibility for iTap's web version, resulting in a 30% increase in website traffic and a 25% decrease in bounce rate.\n● Strong background in software development, ensuring the robustness and reliability of iTap across all platforms, leading to a 40% decrease in app crashes and a 20% increase in overall user satisfaction." },
-        { id: 2, title: 'Canvia: Art Gallery\nat home', links: [{ android: "https://play.google.com/store/apps/details?id=com.palacio.canvia&pcampaignid=web_share" }], image: "https://play-lh.googleusercontent.com/Ztrvf9znaktVCS6J36tPPJI73RC-Sc-FCBQFZ3Hw6u7-DE_rPv-DOi47NP3a4Jqm7Q=w480-h960-rw", duration: "March 2023 - May 2023", role: "Android Developer", description: "● Spearheaded the development of Canvia, a cutting-edge smart art frame loT project aimed at revolutionising the art viewing experience.\n● Specialised in Internet of Things (IoT) development, ensuring seamless connectivity and functionality of Canvia's smart features.\n● Led Android development efforts for the Canvia mobile application, resulting in a 20% increase in app downloads and a 15% improvement in user retention rates within the first three months of release." },
-        { id: 3, title: 'Insta Parenting App:\nPlay-Way', links: [{ android: "https://play.google.com/store/apps/details?id=com.parenting.instaparenting&pcampaignid=web_share" }], image: "https://play-lh.googleusercontent.com/KyP59LujVr_v9ZwKQVkfwkb4rCaamItgxxPdsIvApYOXvupWQYYjEFEBwQMDK5JlkADJ=w480-h960-rw", duration: "January 2023 - March 2023", role: "Android Developer", description: "● Created a user-friendly platform designed to provide an engaging and delightful learning experience for children while laying a strong foundation for academic success.\n● Specialised in Android development to ensure seamless functionality and optimal performance of the Jyppzer Kids mobile application, resulting in a 25% decrease in app loading time and a 30% increase in user engagement, as evidenced by a rise in daily active users." },
-        { id: 4, title: 'Aurum KuberX: Loans & Partners', links: [{ android: "https://play.google.com/store/apps/details?id=com.aurumsoftwaresoultions.aurumkuberxapp&pcampaignid=web_share" }, { ios: "https://apps.apple.com/in/app/aurum-kuberx-loans-partners/id6447743833" }, { web: "https://www.aurumkuberx.com/" }], image: "https://play-lh.googleusercontent.com/j1NATpTKEBmKCAvcI_v1yYn1lFKPNpfz6AzMukizoRSJzJwuGb5Ijs6PjppDoHSPd_c=w480-h960-rw", duration: "October 2023 - Present", role: "Full-Stack Developer", description: "" },
+        { id: 1, title: 'iTAP Entertainment\n& Gaming', links: [{ android: "https://play.google.com/store/apps/details?id=com.app.itap&pcampaignid=web_share" }, { ios: "https://apps.apple.com/in/app/itap-entertainment-gaming/id6443938485" }, { web: "https://stream.itap.online/" }], project_images: ["https://play-lh.googleusercontent.com/HpHqsQpo8NS-7VCQeF8ISnqYtNNHRQKBvEXP9Imr6SOnqufNm1jjduwkkGAN6er7KtFk=w1052-h592-rw", "https://play-lh.googleusercontent.com/Mh2sb01OwyA0ToYBlDxFyQt6dbrhoKyXN-IXXv42mgFZwO2YELLWT5Wx5Pips_VxDE8=w1052-h592-rw", "https://play-lh.googleusercontent.com/FCDuGCtzc3w6sjwCNzepeuEFB-QZSEcoC4G9ubWC62iWgK4EnBeaOUOFDEWCg9Q1qFw=w1052-h592-rw", "https://play-lh.googleusercontent.com/FPnUUU7IZvdocZ__ECLpoGjlnmbZd9ApOgfpulEfuK2l_bU1XMEQHn7-4VxyL3yKRK4=w1052-h592-rw", "https://play-lh.googleusercontent.com/o5-FOJ0fGSY89JDZ6PSohvcCVcB_lDLHwhx75Accye0N14CPyt6R_RsfHVi17m9olQ=w1052-h592-rw", "https://play-lh.googleusercontent.com/9lDIWWcRQKKnZeYTsZc95Ebi80NUVqVAJDSuqm6VX_4JQDReMQsXkIFzctenUWWyRGEE=w1052-h592-rw"], image: "https://play-lh.googleusercontent.com/WGGw9sdmGBhWqfhDO54FiSmA__6jR8Cft-M9jutBzzprcMYakmWNANT2HMelsc459A=w480-h960-rw", duration: "May 2023 - October 2024", role: "Android & Flutter Developer", description: "● Played a pivotal role in the development of iTap, a cutting-edge entertainment platform.\n● Proficient in Android development, specialising in creating captivating entertainment experiences, leading toa 25% increase in user engagement and a 20% rise in app ratings on the Google Play Store.\n● Well-versed in iOs development, contributing to the diverse range of content offered on the iTap platform, resulting in a 15% expansion of the user base on iOS devices.\n● Competent in web development, enhancing user experience and accessibility for iTap's web version, resulting in a 30% increase in website traffic and a 25% decrease in bounce rate.\n● Strong background in software development, ensuring the robustness and reliability of iTap across all platforms, leading to a 40% decrease in app crashes and a 20% increase in overall user satisfaction." },
+        { id: 2, title: 'Canvia: Art Gallery\nat home', links: [{ android: "https://play.google.com/store/apps/details?id=com.palacio.canvia&pcampaignid=web_share" }], project_images: ["https://play-lh.googleusercontent.com/WtRvwOulVcxhGuJeIclWyn3d8DDmjJA_hRTcrJXNz4Thaqj502Gtg0y1EKffzuXvOhc=w1052-h592-rw", "https://play-lh.googleusercontent.com/z0VrNRbZPeEaayA6FW0nw3wObt0cZINEfjx3SAupkRJsjXKKNA8HzwtA8Q9ahqBOOw=w1052-h592-rw", "https://play-lh.googleusercontent.com/dVRzn-9YElunYuR64gCzyJ8tKVz88p_xHJ6FgUXSdfwGD8_XrMaL8xaqVbnE84Q8fQ=w1052-h592-rw", "https://play-lh.googleusercontent.com/CdEnBJd0OH3LPbHaJdrg59MavAJgm8luwrKjiIXh3D6-6EUvHiF0oNXL_eyGG7IV3w=w1052-h592-rw", "https://play-lh.googleusercontent.com/0sX0P9gFmYaHOkAqZBpLvxO5Y5yj-lphdyEBO11WyzHKF9h0xCDZjdeGNualv60h8PwE=w1052-h592-rw", "https://play-lh.googleusercontent.com/XpWD9LN7XqywdzuVi5GfTu7mB1cu8PJN51r7-mvaiOG_0OtRf4dMPKKUq2ZwLEog3qg=w1052-h592-rw", "https://play-lh.googleusercontent.com/DpnQsKmqnUiuOVNUv51lgg7YgPxhJpLXnBJZTFCh5akpLuBdq9FPBxiwwCvJmbZ46qs=w1052-h592-rw", "https://play-lh.googleusercontent.com/-JlTLS3H5kgd2lp4r9Xp7_6aGan8MbcAi8AIrFzD01wYHTcaimXaiIen3zjoxbJTxg=w1052-h592-rw"], image: "https://play-lh.googleusercontent.com/Ztrvf9znaktVCS6J36tPPJI73RC-Sc-FCBQFZ3Hw6u7-DE_rPv-DOi47NP3a4Jqm7Q=w480-h960-rw", duration: "March 2023 - May 2023", role: "Android Developer", description: "● Spearheaded the development of Canvia, a cutting-edge smart art frame loT project aimed at revolutionising the art viewing experience.\n● Specialised in Internet of Things (IoT) development, ensuring seamless connectivity and functionality of Canvia's smart features.\n● Led Android development efforts for the Canvia mobile application, resulting in a 20% increase in app downloads and a 15% improvement in user retention rates within the first three months of release." },
+        { id: 3, title: 'Insta Parenting App:\nPlay-Way', links: [{ android: "https://play.google.com/store/apps/details?id=com.parenting.instaparenting&pcampaignid=web_share" }], project_images: ["https://play-lh.googleusercontent.com/Zn4pMjYjJza-Fc0uxxnE1wjws9QX4S6-A91AxRpbkgO3fZVziuuEAIb6sBJV1u0PQw=w1052-h592-rw", "https://play-lh.googleusercontent.com/hYecHSGypooyanJB_H29SpVj_LYlwK36lzaVtkiLgmkOdLhTULE6xZGvoz_2GgCHsg=w1052-h592-rw", "https://play-lh.googleusercontent.com/_9_nbZaaExfbH4CYCsfSr_OWTaVEmw7XaDZuj2jGhu_PJPc4_c7XjwMWre4PZvhnmQ=w1052-h592-rw", "https://play-lh.googleusercontent.com/qLbxjNUSqypiv0eAU_2UJx_uIjGMcPUewEq3n6v2pW7Kr6ZDHDxk7SWf2jmYhJIlCkyV=w1052-h592-rw", "https://play-lh.googleusercontent.com/H1GZSglqfdlBrN1Y7l451DwIge9jmCmRmi7B2NYM9Mmb1kys35X_Y23903dI38ZiHvk=w1052-h592-rw"], image: "https://play-lh.googleusercontent.com/KyP59LujVr_v9ZwKQVkfwkb4rCaamItgxxPdsIvApYOXvupWQYYjEFEBwQMDK5JlkADJ=w480-h960-rw", duration: "January 2023 - March 2023", role: "Android Developer", description: "● Created a user-friendly platform designed to provide an engaging and delightful learning experience for children while laying a strong foundation for academic success.\n● Specialised in Android development to ensure seamless functionality and optimal performance of the Jyppzer Kids mobile application, resulting in a 25% decrease in app loading time and a 30% increase in user engagement, as evidenced by a rise in daily active users." },
+        { id: 4, title: 'Aurum KuberX: Loans & Partners', links: [{ android: "https://play.google.com/store/apps/details?id=com.aurumsoftwaresoultions.aurumkuberxapp&pcampaignid=web_share" }, { ios: "https://apps.apple.com/in/app/aurum-kuberx-loans-partners/id6447743833" }, { web: "https://www.aurumkuberx.com/" }], project_images: [], image: "https://play-lh.googleusercontent.com/j1NATpTKEBmKCAvcI_v1yYn1lFKPNpfz6AzMukizoRSJzJwuGb5Ijs6PjppDoHSPd_c=w480-h960-rw", duration: "October 2023 - Present", role: "Full-Stack Developer", description: "" },
     ];
 
     const [activeProjectDetail, setActiveProjectDetail] = useState(project_cards[0]);
@@ -280,11 +334,12 @@ function App() {
                             <div className="links-bar">
                                 {renderIcons(activeProjectDetail.links)}
                             </div>
-                            <img
+                            {screenWidth < 700 && <img
                                 style={{ marginTop: "25px" }}
                                 className='circular-image'
                                 src={activeProjectDetail.image}
-                            ></img>
+                            ></img>}
+                            {screenWidth >= 700 && <ProjectCard key={activeProjectDetail.id} project={activeProjectDetail} />}
                             <span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "20px", marginLeft: "25px", marginRight: "25px" }}>{activeProjectDetail.title}</span>
                             <span style={{ fontFamily: "Arial", fontSize: "20px", marginLeft: "25px", marginRight: "25px", marginTop: "25px" }}>{activeProjectDetail.role}</span>
                             <span style={{ fontStyle: "italic", fontFamily: "Arial", fontSize: "15px", marginLeft: "25px", marginRight: "25px", marginBottom: "25px" }}>{activeProjectDetail.duration}</span>
