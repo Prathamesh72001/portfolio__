@@ -90,7 +90,7 @@ function App() {
             return result;
         };
 
-        const imageChunks = images ? chunkArray(images, 3) : [];
+        const imageChunks = images ? chunkArray(images, screenWidth >= 700 ? 3 : 1) : [];
 
         return (
 
@@ -103,7 +103,29 @@ function App() {
                         autoPlay={true}
                         interval={3000} // Auto-scroll interval set to 3 seconds
                         stopOnHover={true} // Pause when hovering
-                        showStatus={false}>
+                        showStatus={false}
+                        showIndicators={true}
+                        renderIndicator={(onClickHandler, isSelected, index, label) => {
+                            return (
+                                <li
+                                    style={{
+                                        background: isSelected ? "#333" : "#bbb",
+                                        width: isSelected ?16: 8,
+                                        height:8,
+                                        display: "inline-block",
+                                        margin: "5px",
+                                        borderRadius:isSelected ? "35%" : "50%",
+                                        cursor: "pointer",
+                                        position: "relative",
+                                        bottom: "-15px", // Moves the dots below the images
+                                    }}
+                                    onClick={onClickHandler}
+                                    key={index}
+                                    role="button"
+                                    aria-label={`${label} ${index + 1}`}
+                                />
+                            );
+                        }}>
                         {imageChunks.map((chunk, index) => (
                             <div key={index} className="slide-container">
                                 {chunk.map((image, idx) => (
@@ -334,12 +356,7 @@ function App() {
                             <div className="links-bar">
                                 {renderIcons(activeProjectDetail.links)}
                             </div>
-                            {screenWidth < 700 && <img
-                                style={{ marginTop: "25px" }}
-                                className='circular-image'
-                                src={activeProjectDetail.image}
-                            ></img>}
-                            {screenWidth >= 700 && <ProjectCard key={activeProjectDetail.id} project={activeProjectDetail} />}
+                            <ProjectCard key={activeProjectDetail.id} project={activeProjectDetail} />
                             <span style={{ color: "#00C08D", fontFamily: "Arial", fontSize: "20px", marginLeft: "25px", marginRight: "25px" }}>{activeProjectDetail.title}</span>
                             <span style={{ fontFamily: "Arial", fontSize: "20px", marginLeft: "25px", marginRight: "25px", marginTop: "25px" }}>{activeProjectDetail.role}</span>
                             <span style={{ fontStyle: "italic", fontFamily: "Arial", fontSize: "15px", marginLeft: "25px", marginRight: "25px", marginBottom: "25px" }}>{activeProjectDetail.duration}</span>
