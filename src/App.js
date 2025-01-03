@@ -155,7 +155,7 @@ function App() {
                 {(!activeProject && !activeExperience) ?
                     (<div className='App-header'>
                         {/*tool bar*/}
-                        {screenWidth < 1300 &&
+                        {screenWidth < 1100 &&
                             <div style={{
                                 top: "5px",
                                 right: "25px",
@@ -187,7 +187,7 @@ function App() {
                                     </List>
                                 </Drawer>
                             </div>}
-                        {screenWidth >= 1300 && <div className="tool-bar">
+                        {screenWidth >= 1100 && <div className="tool-bar">
                             <div
                                 className={`tab ${activeTab === "tab1" ? "active" : ""}`}
                                 onClick={() =>
