@@ -358,7 +358,7 @@ button:hover {
 }
 
 .carousel .control-dots .dot.selected {
-    background: #333;
+    background: #00C08D;
     /* Active dot color */
     opacity: 1;
 }
