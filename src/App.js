@@ -189,7 +189,7 @@ function App() {
               return (
                 <li
                   style={{
-                    background: isSelected ? "#333" : "#00C08D",
+                    background: isSelected ? "#00C08D" : "#bbb",
                     width: isSelected ? 16 : 8,
                     height: 8,
                     display: "inline-block",
