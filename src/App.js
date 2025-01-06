@@ -5,6 +5,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Worker, Viewer } from "@react-pdf-viewer/core";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+import emailjs from "@emailjs/browser";
+
 const cheerio = require("cheerio");
 import {
   Drawer,
@@ -28,6 +30,48 @@ function App() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [activeProject, setActiveProject] = useState(false);
   const [activeExperience, setActiveExperience] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const validate = () => {
+    let tempErrors = {};
+    if (!formData.name.trim()) tempErrors.name = "Name is required";
+    if (!formData.email.trim()) tempErrors.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      tempErrors.email = "Invalid email format";
+    if (!formData.message.trim()) tempErrors.message = "Message is required";
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (validate()) {
+      const serviceId = "service_ebc52kr"; // Replace with EmailJS service ID
+      const templateId = "template_w6ge27q"; // Replace with EmailJS template ID
+      const publicKey = "Zn4bdgyPe56rDGiXd"; // Replace with EmailJS public key
+
+      emailjs
+        .send(serviceId, templateId, formData, publicKey)
+        .then((response) => {
+          console.log("Email sent successfully!", response);
+          setSubmitted(true);
+          setFormData({ name: "", email: "", message: "" });
+        })
+        .catch((error) => console.error("Error sending email:", error));
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -51,7 +95,14 @@ function App() {
     "  React Developerr  ",
   ];
 
-  const menuItems = ["Home", "About", "Skills", "Projects", "Experiences"];
+  const menuItems = [
+    "Home",
+    "About",
+    "Skills",
+    "Projects",
+    "Experiences",
+    "Contact Me",
+  ];
 
   const skill_cards = [
     {
@@ -390,7 +441,7 @@ function App() {
         {!activeProject && !activeExperience ? (
           <div className="App-header">
             {/*tool bar*/}
-            {screenWidth < 1100 && (
+            {screenWidth < 1400 && (
               <div
                 style={{
                   top: "5px",
@@ -437,7 +488,7 @@ function App() {
                 </Drawer>
               </div>
             )}
-            {screenWidth >= 1100 && (
+            {screenWidth >= 1400 && (
               <div className="tool-bar">
                 <div
                   className={`tab ${activeTab === "tab1" ? "active" : ""}`}
@@ -468,6 +519,12 @@ function App() {
                   onClick={() => setActiveTab("tab5")}
                 >
                   Experience
+                </div>
+                <div
+                  className={`tab ${activeTab === "tab6" ? "active" : ""}`}
+                  onClick={() => setActiveTab("tab6")}
+                >
+                  Contact Me
                 </div>
               </div>
             )}
@@ -568,6 +625,19 @@ function App() {
                 }}
               >
                 Skills
+              </span>
+            )}
+            {activeTab == "tab6" && (
+              <span
+                style={{
+                  color: "#00C08D",
+                  fontFamily: "Arial",
+                  fontSize: "35px",
+                  marginLeft: "25px",
+                  marginRight: "25px",
+                }}
+              >
+                Contact Me
               </span>
             )}
 
@@ -701,6 +771,102 @@ function App() {
                         <div className="card-text">{card.title}</div>
                       </div>
                     ))}
+                  </div>
+                ) : activeTab == "tab6" ? (
+                  <div className="contact-container">
+                    {submitted && (
+                      <p className="success-message">
+                        Thank you for reaching out! I'll get back to you soon.
+                      </p>
+                    )}
+                    <form onSubmit={handleSubmit}>
+                      <div className="form-group">
+                        <label>Name:</label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                        />
+                        {errors.name && (
+                          <p className="error-text">{errors.name}</p>
+                        )}
+                      </div>
+                      <div className="form-group">
+                        <label>Email:</label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                        />
+                        {errors.email && (
+                          <p className="error-text">{errors.email}</p>
+                        )}
+                      </div>
+                      <div className="form-group">
+                        <label>Message:</label>
+                        <textarea
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                        />
+                        {errors.message && (
+                          <p className="error-text">{errors.message}</p>
+                        )}
+                      </div>
+                      <button className="rounded-button">Send Message</button>
+                    </form>
+                    <br />
+                    <br />
+                    <div className="social-bar-horizontal">
+                      <img
+                        src="https://th.bing.com/th/id/OIP.k6lUqaSsHH2O9icUX0f_DQHaHa?w=191&h=191&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+                        className="image-button"
+                        onClick={() =>
+                          openLink(
+                            "https://www.facebook.com/people/Prathamesh-Sawardekar/pfbid0kicduEVeoCEzLbD9ebQptiZRLuFbF1NTf7wmYbLttRQ5WTjoqbeQ3au5YMpSoF8l/?mibextid=ZbWKwL"
+                          )
+                        }
+                      />
+                      <img
+                        src="https://static-00.iconduck.com/assets.00/github-icon-2048x2048-dpporae2.png"
+                        className="image-button"
+                        onClick={() =>
+                          openLink("https://github.com/Prathamesh72001")
+                        }
+                      />
+                      <img
+                        src="https://th.bing.com/th/id/OIP.g8P-sH4xNG_jxN9yUTLoTwHaHa?w=214&h=214&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+                        className="image-button"
+                        onClick={() =>
+                          openLink(
+                            "https://www.linkedin.com/in/prathamesh-sawardekar-3671b9238"
+                          )
+                        }
+                      />
+                      <img
+                        src="https://th.bing.com/th?id=OIP.JtmXSh_uyZBaTg1eXd-NtgHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"
+                        className="image-button"
+                        onClick={() =>
+                          openLink(
+                            "https://www.instagram.com/prathamesh_pratik_07/?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
+                          )
+                        }
+                      />
+                      <img
+                        src="https://th.bing.com/th/id/OIP.tvKJc7Lvs-0Mo2cYPMugvAHaHa?w=203&h=203&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+                        className="image-button"
+                        onClick={() =>
+                          openLink("https://telegram.me/prathamesh070401")
+                        }
+                      />
+                      <img
+                        src="https://th.bing.com/th/id/OIP.63DXNT7dro-XDctQsQE7VwHaHa?w=187&h=187&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+                        className="image-button"
+                        onClick={() => openLink("https://wa.link/aiezfi")}
+                      />
+                    </div>
                   </div>
                 ) : null}
               </div>

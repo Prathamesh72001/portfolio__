@@ -35,6 +35,14 @@
     gap: 10px;
 }
 
+.social-bar-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
 .links-bar {
     top: 15px;
     right: 15px;
@@ -362,3 +370,34 @@ button:hover {
     /* Active dot color */
     opacity: 1;
 }
+
+.contact-container {
+    width: calc(60px + 60vmin);
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  input, textarea {
+    width: calc(60px + 60vmin);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .error-text {
+    color: red;
+    font-size: 14px;
+  }
+  
+  .success-message {
+    color: #00C08D;
+    font-size: 16px;
+  }
+  
