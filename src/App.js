@@ -700,7 +700,7 @@ function App() {
                 class="rounded-button"
                 onClick={() => {
                   openLink(
-                    "https://docs.google.com/document/d/10DKPAMo_dSD9QqlZnuo3oSD2hLpxiHY98fu2yUaSIew/edit?usp=drive_link"
+                    "https://drive.google.com/file/d/1JafBOKdFkADDqg2c416tJG64xiC0rzux/view?usp=drive_link"
                   );
                 }}
               >
