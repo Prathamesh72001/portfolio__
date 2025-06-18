@@ -362,7 +362,7 @@ function App() {
       duration: "January 2023 - March 2023",
       role: "Android Developer",
       description:
-        "● Created a user-friendly platform designed to provide an engaging and delightful learning experience for children while laying a strong foundation for academic success.\n● Specialised in Android development to ensure seamless functionality and optimal performance of the Jyppzer Kids mobile application, resulting in a 25% decrease in app loading time and a 30% increase in user engagement, as evidenced by a rise in daily active users.",
+        "● Created a user-friendly platform designed to provide an engaging and delightful learning experience for children while laying a strong foundation for academic success.\n● Specialised in Android development to ensure seamless functionality and optimal performance of the Insta Parent mobile application, resulting in a 25% decrease in app loading time and a 30% increase in user engagement, as evidenced by a rise in daily active users.",
     },
     {
       id: 4,
@@ -377,12 +377,18 @@ function App() {
         },
         { web: "https://www.aurumkuberx.com/" },
       ],
-      project_images: [],
+      project_images: [
+        "https://play-lh.googleusercontent.com/O9tU6bqG-hayoJ7L4td9gLwMVPo-SE0atZ5in1YzxMHKv5ICARCoMKVNVc11I_CctQ=w1052-h592-rw",
+        "https://play-lh.googleusercontent.com/t_0qg_YKP1trP0kjbbV-GrWkImXSxWmoW1NpdfL1M3959oYZLxx6TR2k299lVVU0oA=w1052-h592-rw",
+        "https://play-lh.googleusercontent.com/jVzbzidqqyJBct6aytNvUg-3gp8bte7Ti8HfBejZfiuwqP1EdDNPkOm3wICyIFRHDqKZ=w1052-h592-rw",
+        "https://play-lh.googleusercontent.com/D3ad7S0rSXiMNyId9vVhWD8QWfWbKfu_c-Mvr8v7Z9sCtFFcCcJV_-cU01gZkzD0=w1052-h592-rw",
+        "https://play-lh.googleusercontent.com/hti58JrMvLKKeoLYKqco2NAUic1dZzVlTfjcNmgduE-YL-iGDWTwABrjj780OkjdYA=w1052-h592-rw"
+      ],
       image:
         "https://play-lh.googleusercontent.com/j1NATpTKEBmKCAvcI_v1yYn1lFKPNpfz6AzMukizoRSJzJwuGb5Ijs6PjppDoHSPd_c=w480-h960-rw",
       duration: "October 2023 - Present",
       role: "Full-Stack Developer",
-      description: "",
+      description: "● Developed and maintained a cross-platform mobile app using Flutter, enabling financial professionals (Connectors, DSAs, Channel Partners) to create, manage, and track banking loan leads.\n● Engineered and consumed backend RESTful APIs using Node.js and Express, integrating secure and scalable data flows between the mobile app, partner dashboards, and admin panels.\n● Helped grow app usage from 200 to over 1000+ downloads, contributing directly to user adoption and business scaling.\n● Ensured mobile app codebase followed best practices with version control, modular architecture, and scalable design patterns.",
     },
   ];
 
@@ -401,7 +407,7 @@ function App() {
       background_color: "#FFFFFF",
       role: "Analyst - Software Engineer",
       location: "Ghansoli, Maharashtra",
-      description: "",
+      description: "● Spearheaded mobile development for Aurum KuberX using Flutter, delivering a seamless experience across Android and iOS for Connectors, DSAs, and Channel Partners to manage and track loan leads.\n● Contributed to backend development using Node.js and Express, designing and optimizing APIs powering mobile functionality and partner dashboards.\n● Implemented features like reward and referral systems, transaction tracking, and real-time lead status updates, increasing app engagement and retention.\n● Collaborated closely with cross-functional teams to scale app downloads from 200 to 1000+, driving significant growth in platform adoption.\n● Ensured app stability and performance with effective bug tracking and resolution, reducing reported issues by over 30%.",
     },
     {
       id: 2,
@@ -694,7 +700,7 @@ function App() {
                 class="rounded-button"
                 onClick={() => {
                   openLink(
-                    "https://drive.google.com/file/d/1-pTkwNKlS99HdnaqweUa4cSsnv0V_o4_/preview"
+                    "https://docs.google.com/document/d/10DKPAMo_dSD9QqlZnuo3oSD2hLpxiHY98fu2yUaSIew/edit?usp=drive_link"
                   );
                 }}
               >
